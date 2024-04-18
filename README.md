@@ -1,5 +1,7 @@
 # BSP SSD1315 Component
 
+![latest tag](https://img.shields.io/github/v/tag/STMicroelectronics/stm32-ssd1315.svg?color=brightgreen)
+
 ## Overview
 
 **STM32Cube** is an STMicroelectronics original initiative to ease the developers life by reducing efforts, time and cost.
@@ -35,6 +37,4 @@ Please refer to the repository of the BSP **board** driver you are using to know
 
 ## Troubleshooting
 
-If you have any issue with the **software content** of this repository, you can file an issue [here](https://github.com/STMicroelectronics/ssd1315/issues/new/choose).
-
-For any other question related to the product, the tools, the environment, you can submit a topic to the [ST Community](https://community.st.com/s/).
+Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
