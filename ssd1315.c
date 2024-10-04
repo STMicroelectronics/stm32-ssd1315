@@ -202,7 +202,7 @@ int32_t SSD1315_Init(SSD1315_Object_t *pObj, uint32_t ColorCoding, uint32_t Orie
       ret += ssd1315_write_reg(&pObj->Ctx, 1,&data, 1);
       data = SSD1315_DISPLAY_ON;
       ret += ssd1315_write_reg(&pObj->Ctx, 1,&data, 1);
-      ssd1315_Clear(SSD1315_COLOR_BLACK); 
+      ssd1315_Clear(SSD1315_COLOR_BLACK);
       ret += ssd1315_write_reg(&pObj->Ctx, 1, PhysFrameBuffer,  SSD1315_LCD_COLUMN_NUMBER*SSD1315_LCD_PAGE_NUMBER);
     }
     else
@@ -270,7 +270,7 @@ int32_t SSD1315_DisplayOn(SSD1315_Object_t *pObj)
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
   data = SSD1315_DISPLAY_ON;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
-  
+
   if (ret != SSD1315_OK)
   {
     ret = SSD1315_ERROR;
@@ -287,14 +287,14 @@ int32_t SSD1315_DisplayOff(SSD1315_Object_t *pObj)
 {
   int32_t ret = SSD1315_OK;
   uint8_t data;
-  
+
   data = SSD1315_CHARGE_PUMP_SETTING;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
   data = SSD1315_HIGHER_COLUMN_START_ADRESS_1;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
   data = SSD1315_DISPLAY_OFF;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
-  
+
   if (ret != SSD1315_OK)
   {
     ret = SSD1315_ERROR;
@@ -382,7 +382,7 @@ int32_t SSD1315_SetCursor(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos)
 
 int32_t SSD1315_Refresh(SSD1315_Object_t *pObj)
 {
-  int32_t ret = SSD1315_OK; 
+  int32_t ret = SSD1315_OK;
   uint8_t data;
 
   data = SSD1315_DISPLAY_START_LINE_1;
@@ -437,7 +437,7 @@ int32_t SSD1315_DrawBitmap(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos,
   height = pBmp[22] + (pBmp[23] << 8) + (pBmp[24] << 16)  + (pBmp[25] << 24);
 
   /* Size conversion */
-  size = (size - index)/2;
+  size = (size - index);
 
   /* Apply offset to bypass header */
   pBmp += index;
@@ -511,15 +511,15 @@ int32_t SSD1315_ShiftBitmap(SSD1315_Object_t *pObj,uint16_t Xpos, uint16_t Ypos,
   uint32_t height = 0, width  = 0, original_width  = 0;
   uint32_t x = 0, y  = 0, y0 = 0;
   uint32_t XposBMP = 0, YposBMP  = 0, original_YposBMP = 0;
-  
+
   /* Read bitmap size */
   size = *(volatile uint16_t *) (pbmp + 2);
   size |= (*(volatile uint16_t *) (pbmp + 4)) << 16;
-  
+
   /* Get bitmap data address offset */
   index = *(volatile uint16_t *) (pbmp + 10);
   index |= (*(volatile uint16_t *) (pbmp + 12)) << 16;
-  
+
   /* Read bitmap width */
   width = *(uint16_t *) (pbmp + 18);
   width |= (*(uint16_t *) (pbmp + 20)) << 16;
@@ -534,7 +534,7 @@ int32_t SSD1315_ShiftBitmap(SSD1315_Object_t *pObj,uint16_t Xpos, uint16_t Ypos,
     width = width + Xshift;
     XposBMP = -Xshift;
   }
-  
+
   /* Read bitmap height */
   height = *(uint16_t *) (pbmp + 22);
   height |= (*(uint16_t *) (pbmp + 24)) << 16;
@@ -549,14 +549,14 @@ int32_t SSD1315_ShiftBitmap(SSD1315_Object_t *pObj,uint16_t Xpos, uint16_t Ypos,
     YposBMP = -Yshift;
   }
   original_YposBMP = YposBMP;
-  
+
   /* Size conversion */
-  size = (size - index)/2;
+  size = (size - index);
   size = size - ((Xshift*height/8)+(Yshift*width/8 ));
-  
+
   /* Apply offset to bypass header */
   pbmp += index;
-  
+
   /* if bitmap cover whole screen */
   if((Xpos == 0) && (Xpos == 0) & (size == (SSD1315_LCD_PIXEL_WIDTH * SSD1315_LCD_PIXEL_HEIGHT/8)))
   {
@@ -567,7 +567,7 @@ int32_t SSD1315_ShiftBitmap(SSD1315_Object_t *pObj,uint16_t Xpos, uint16_t Ypos,
     x=Xpos+width;
     y=Ypos+height;
     y0 = Ypos;
-    
+
     for(; Xpos < x; Xpos++, XposBMP++)
     {
       for(Ypos = y0, YposBMP = original_YposBMP; Ypos < y; Ypos++, YposBMP++)
@@ -680,7 +680,7 @@ int32_t SSD1315_DrawVLine(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, 
 {
   int32_t  ret = SSD1315_OK;
   uint32_t i = 0;
-  
+
   for (i = Ypos; i < (Ypos+Length); i++)
   {
     SSD1315_SetPixel(pObj,Xpos, i, Color);
@@ -730,7 +730,7 @@ int32_t SSD1315_FillRect(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, u
 int32_t SSD1315_SetPixel(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, uint32_t Color)
 {
   int32_t  ret = SSD1315_OK;
-  /* Prevent unused argument(s) compilation warning */  
+  /* Prevent unused argument(s) compilation warning */
   (void)(pObj);
   /* Set color */
   if (Color == SSD1315_COLOR_WHITE)
@@ -759,11 +759,11 @@ int32_t SSD1315_SetPixel(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, u
   */
 int32_t SSD1315_GetPixel(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, uint32_t *Color)
 {
-   int32_t  ret = SSD1315_OK;
-  /* Prevent unused argument(s) compilation warning */  
+  int32_t  ret = SSD1315_OK;
+  /* Prevent unused argument(s) compilation warning */
   (void)(pObj);
-  
-  if ((Xpos >= SSD1315_LCD_PIXEL_WIDTH) || (Ypos >= SSD1315_LCD_PIXEL_HEIGHT)) 
+
+  if ((Xpos >= SSD1315_LCD_PIXEL_WIDTH) || (Ypos >= SSD1315_LCD_PIXEL_HEIGHT))
   {
     *Color = 0;
   }
@@ -779,7 +779,7 @@ int32_t SSD1315_GetPixel(SSD1315_Object_t *pObj, uint32_t Xpos, uint32_t Ypos, u
       *Color = 0;
     }
   }
-  
+
   return ret;
 }
 
@@ -907,7 +907,7 @@ int32_t SSD1315_ScrollingSetup(SSD1315_Object_t *pObj, uint16_t ScrollMode, uint
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
   data = EndPage;                                        /* End page address*/
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
-  data = SSD1315_LOWER_COLUMN_START_ADRESS;           
+  data = SSD1315_LOWER_COLUMN_START_ADRESS;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
   data = SSD1315_CONTRAST_CONTROL_2;
   ret += ssd1315_write_reg(&pObj->Ctx, 1, &data, 1);
@@ -999,7 +999,7 @@ static int32_t SSD1315_WriteRegWrap(void *handle, uint16_t Reg, uint8_t* pData, 
 static void ssd1315_Clear(uint16_t ColorCode)
 {
   /* Check color */
-  if (ColorCode == SSD1315_COLOR_WHITE) 
+  if (ColorCode == SSD1315_COLOR_WHITE)
   {
     memset(PhysFrameBuffer, SSD1315_COLOR_WHITE, SSD1315_LCD_COLUMN_NUMBER*SSD1315_LCD_PAGE_NUMBER);
   }
