@@ -1,4 +1,4 @@
-# BSP SSD1315 Component
+# BSP SSD1315 LCD Component
 
 ![latest tag](https://img.shields.io/github/v/tag/STMicroelectronics/stm32-ssd1315.svg?color=brightgreen)
 
@@ -9,7 +9,7 @@
 **STM32Cube** covers the overall STM32 products portfolio. It includes a comprehensive embedded software platform delivered for each STM32 series.
    * The CMSIS modules (core and device) corresponding to the ARM(tm) core implemented in this STM32 product.
    * The STM32 HAL-LL drivers, an abstraction layer offering a set of APIs ensuring maximized portability across the STM32 portfolio.
-   * The BSP drivers of each evaluation, demonstration or nucleo board provided for this STM32 series.
+   * The BSP drivers of each evaluation, discovery, or nucleo board provided for this STM32 series.
    * A consistent set of middleware components such as RTOS, USB, FatFS, graphics, touch sensing library...
    * A full set of software projects (basic examples, applications, and demonstrations) for each board provided for this STM32 series.
 
@@ -20,12 +20,6 @@ Two models of publication are proposed for the STM32Cube embedded software:
 ## Description
 
 This **ssd1315** MCU component repository is one element **common to all** STM32Cube MCU embedded software packages, providing the **SSD1315** BSP LCD component part.
-
-## License
-
-Copyright (c) 2019 STMicroelectronics
-
-This software component is licensed by STMicroelectronics under the **BSD-3-Clause** license. You may not use this software except in compliance with this license. You may obtain a copy of the license [here](https://opensource.org/licenses/BSD-3-Clause).
 
 ## Release note
 
