@@ -1,6 +1,6 @@
 # BSP SSD1315 Component
 
-![latest tag](https://img.shields.io/github/v/tag/STMicroelectronics/stm32-ssd1315.svg?color=brightgreen)
+![tag](https://img.shields.io/badge/tag-v1.1.1-brightgreen.svg)
 
 ## Overview
 
@@ -29,7 +29,7 @@ This software component is licensed by STMicroelectronics under the **BSD-3-Clau
 
 ## Release note
 
-Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/ssd1315/blob/main/Release_Notes.html).
+Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/ssd1315/blob/bspv1/Release_Notes.html).
 
 ## Compatibility information
 
